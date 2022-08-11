@@ -90,3 +90,192 @@
      * 순서 유지?
      * 중복 허용?
      * 다른 자료구조들에 비해서 어떤 장단점?
+   * java.util 패키지: 다수의 데이터를 쉽게 처리하는 방법 제공
+   * Collection Framework 핵심 interface
+
+2. Collection Framework - List
+   
+   * 특징 : 순서O, 중복O (배열과 유사)
+   
+   * 구현 클래스: ArrayList, LinkedList
+   
+   * 내부적으로 배열을 이용하여 데이터를 관리
+   
+   * 배열과 다르게 크기가 유동적으로 변함 (동적 자료구조)
+   
+   * 배열을 다루는 것과 유사하게 사용 가능
+   
+   * 주요 메서드
+   
+   * 배열과 ArrayList
+     
+     * 배열의 장점
+       
+       * 가장 기본적인 형태의 자료 구조, 간단, 사용 쉬움
+       
+       * 접근 속도 빠름
+     
+     * 배열의 단점
+       
+       * 크기 변경X -> 추가 데이터 위해 새로운 배열을 만들고 복사 해야함
+       
+       * 비 순차적 데이터의 추가, 삭제에 많은 시간이 걸림
+     
+     * 배열을 사용하는 ArrayList도 배열의 장/단점을 그대로 가져감
+
+3. Collection Framework - ArrayList
+   
+   * | 메서드                  | 내용                    |
+     | -------------------- | --------------------- |
+     | add(E e)             | 데이터 입력                |
+     | get(int index)       | 데이터 추출                |
+     | size()               | 입력된 데이터의 크기 반환        |
+     | remove(int i)        | 특정한 데이터를 삭제           |
+     | remove(Object o)     | 특정한 데이터를 삭제           |
+     | clear()              | 모든 데이터 삭제             |
+     | contains(Object o)   | 특정 객체가 포함되어 있는지 체크    |
+     | isEmpty()            | 비어있는지 체크(true, false) |
+     | addAll(Collection c) | 기존 등록된 콜렉션 데이터 입력     |
+     | iterator()           | iterator 인터페이스 객체 반환  |
+
+4. Collection Framework - 참고
+   
+   * LinkedList
+     
+     * 각 요소를 Node로 정의하고 Node는 다음 요소의 참조 값과 데이터로 구성
+     
+     * 각 요소가 다음 요소의 링크 정보를 가지며 연속적으로 구성될 필요 X
+
+5. Collection Framework - Set
+   
+   * 특징: 순서X, 중복X
+   
+   * 장점: 빠른 속도, 효율적인 중복 데이터 제거 수단
+   
+   * 단점: 단순 집합의 개념으로 정렬 -> 별도의 처리 필요
+   
+   * 구현 클래스: HashSet, TreeSet
+   
+   * Set API 활용
+     
+     | 메서드                | 내용                       |
+     | ------------------ | ------------------------ |
+     | add(E e)           | 데이터 입력                   |
+     | size()             | 입력된 데이터의 크기 반환           |
+     | remove(Object o)   | 특정한 데이터 삭제               |
+     | clear()            | 모든 데이터 삭제                |
+     | contains(Object o) | 특정 객체 포함 여부 체크           |
+     | isEmpty()          | 비어있는지 체크 (true, false)   |
+     | iterator()         | iterator 인터페이스 객체 반환     |
+     | toArray()          | Set의 내용을 Object형의 배열로 변환 |
+
+6. Collection Framework - Map
+   
+   * 특징: Key(키)와 value(값)를 하나의 Entry로 묶어서 데이터 관리, 순서X, 키에 대한 중복X
+   
+   * 장점: 빠른 속도
+   
+   * 구현 클래스: HashMap, TreeMap
+     
+     | 메서드                                 | 내용                                   |
+     | ----------------------------------- | ------------------------------------ |
+     | V put(K key, V value)               | 데이터 입력                               |
+     | V get(Object key)                   | 데이터 추출                               |
+     | V remove(K key)                     | 입력된 데이터의 크기 반환                       |
+     | boolean containsKey(Object key)     | 특정한 key 포함 여부                        |
+     | void putAll(Map\<K key, V value> m) | 기존 콜렉션 데이터 추가                        |
+     | Set\<Map.Entry\<K,V>> entrySet()    | (key와 value) 쌍을 표현하는 Map.Entry 집합 반환 |
+
+7. 정렬
+   
+   * 요소를 특정 기준에 대한 내림차순 또는 오름차순으로 배치하는 것
+   
+   * 순서를 가지는 Collection들만 정렬 가능
+     
+     * List 계열
+     
+     * Set에서는 SortedSet의 자식 객체
+     
+     * Map에서는 SortedMap의 자식 객체(Key 기준)
+   
+   * Collections의 sort()를 이용한 정렬
+     
+     * sort(List\<T> list)
+     
+     * 객체가 Comparable을 구현하고 있는 경우 내장 알고리즘을 통해 정렬
+   
+   * Comparable interface
+   
+   * Comparator의 활용
+     
+     * 객체가 Comparable을 구현하고 있지 않거나 사용자 정의 알고리즘으로 정렬하려는 경우
+     
+     * sort(List\<T> list, Comparator<? Super T> c)
+     
+     * 1회성 객체 사용 시 anonymous inner class 사용
+     
+     * 클래스 정의, 객체 생성을 한번에 처리
+     
+     * 람다 표현식 사용
+
+
+
+## 3. 예외처리 (Exception Handling)
+
+----
+
+1. 에러와 예외
+   
+   * 어떤 원인에 의해 오동작 하거나 비정상적으로 종료되는 경우
+   
+   * 심각도에 따른 분류
+     
+     * Error
+       
+       * 메모리 부족, stack overflow와 같이 일단 발생 -> 복구X
+       
+       * 프로그램의 비 정상적 종료를 막을 수 없음 -> 디버깅 필요
+     
+     * Exception
+       
+       * 읽으려는 파일X, 네트워크 연결X 등 수습될 수 있는 비교적 상태가 약한 것들
+       
+       * 프로그램 코드에 의해 수습될 수 있는 상황
+
+2. 예외처리 (Exception Handling)란
+   
+   * 예외 발생 시 프로그램의 비 정상 종료를 막고 정상적인 실행 상태를 유지하는 것
+   
+   * 예외의 감지 및 예외 발생 시 동작할 코드 작성 필요
+
+3. 예외 클래스의 계층
+   
+   * Checked exception: 예외에 대한 대처 코드X -> 컴파일이 진행X
+   
+   * Unchecked exception (RuntimeException의 하위 클래스): 예외에 대한 대처 코드X -> 컴파일 진행
+
+4. 예외 처리 키워드
+   
+   * 직접 처리: try, catch, finally
+   
+   * 간접 처리: throws
+   
+   * 사용자 정의 예외처리: throw
+
+5. try ~ catch 구문
+
+6. Exception 객체의 정보 활용
+   
+   * Throwable의 주요 메서드
+
+7. try ~ catch 문에서의 흐름
+   
+   * try 블록에서 예외가 발생하면
+   
+   * JVM이 해당 Exception 클래스의 객체 생성 후 던짐(throw) : throw new XXException()
+   
+   * 던져진 exception을 처리할 수 있는 catch 블록에서 받은 후 처리 (적당한 catch 블록을 만나지 못하면 예외처리는 실패)
+   
+   * 정상적으로 처리되면 try~catch 블록을 벗어나 다음 문장 진행
+   
+   * try 블록에서 어떠한 예외도 발생하지 않는 경우 -> catch문을 거치지 않고 다음 흐름 문장 실행
